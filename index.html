@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>LaTeX Editor</title>
+
+    <!-- MathJax -->
+    <script>
+        MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        textarea { width: 100%; height: 150px; }
+        .preview, .pdf { margin-top: 20px; }
+        iframe { width: 100%; height: 500px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+<h2 align="center">LaTeX Editor</h2>
+
+<textarea id="latexInput" oninput="updatePreview()"></textarea>
+
+<div class="preview">
+    <h3 align="center">Live Preview</h3>
+    <div id="mathPreview"></div>
+</div>
+
+
+<script>
+function updatePreview() {
+    const input = document.getElementById('latexInput').value;
+    document.getElementById('mathPreview').innerHTML = input;
+    MathJax.typesetPromise();
+}
+
+updatePreview();
+</script>
+
+</body>
+</html>
